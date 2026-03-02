@@ -61,12 +61,20 @@ class Aeroplane:
     """Класс о данных самолетах"""
 
     def __init__(
-        self, callsign: str, origin_country: str, velocity: float, altitude: float
+            self, callsign: str, origin_country: str, velocity: float, altitude: float
     ):
         self.callsign = callsign.strip() if callsign else "N/A"  # позывной
         self.origin_country = origin_country  # страна регистрации
-        self.velocity = velocity if velocity is not None else 0.0  # скорость полета
-        self.altitude = altitude if altitude is not None else 0.0  # высота полета
+        self.__velocity = velocity if velocity is not None else 0.0  # скорость полета
+        self.__altitude = altitude if altitude is not None else 0.0  # высота полета
+
+    @property
+    def velocity(self):
+        return self.__velocity
+
+    @property
+    def altitude(self):
+        return self.__altitude
 
     @classmethod
     def cast_to_object_list(cls, data):
@@ -95,9 +103,9 @@ class Aeroplane:
         )
 
 
-if __name__ == "__main__":
-    api = AeroplanesAPI()
-    airplane = api.get_aeroplanes("United States")
-    airplanes = Aeroplane.cast_to_object_list(airplane)
-    for plane in airplanes[:5]:
-        print(plane)
+# if __name__ == "__main__":
+    # api = AeroplanesAPI()
+    # airplane = api.get_aeroplanes("United States")
+    # airplanes = Aeroplane.cast_to_object_list(airplane)
+    # for plane in airplanes[:5]:
+    #     print(plane)

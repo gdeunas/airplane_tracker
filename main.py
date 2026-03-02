@@ -1,6 +1,8 @@
 # main.py
 from src.apiairplane import Aeroplane, AeroplanesAPI
 from src.apisave import JSONSaver
+from src.interaction_user import filter_aeroplanes, get_aeroplanes_by_altitude, sort_aeroplanes, get_top_aeroplanes, \
+    print_aeroplanes
 
 # Создание экземпляра класса для работы с API сайтов с самолетами
 api = AeroplanesAPI()
