@@ -60,21 +60,23 @@ class AeroplanesAPI(BaseAPI):
 class Aeroplane:
     """Класс о данных самолетах"""
 
+    __slots__ = ('_callsign', '_origin_country', '_velocity', '_altitude')
+
     def __init__(
             self, callsign: str, origin_country: str, velocity: float, altitude: float
     ):
-        self.callsign = callsign.strip() if callsign else "N/A"  # позывной
-        self.origin_country = origin_country  # страна регистрации
-        self.__velocity = velocity if velocity is not None else 0.0  # скорость полета
-        self.__altitude = altitude if altitude is not None else 0.0  # высота полета
+        self._callsign = callsign.strip() if callsign else "N/A"  # позывной
+        self._origin_country = origin_country  # страна регистрации
+        self._velocity = velocity if velocity is not None else 0.0  # скорость полета
+        self._altitude = altitude if altitude is not None else 0.0  # высота полета
 
     @property
     def velocity(self):
-        return self.__velocity
+        return self._velocity
 
     @property
     def altitude(self):
-        return self.__altitude
+        return self._altitude
 
     @classmethod
     def cast_to_object_list(cls, data):
@@ -98,8 +100,8 @@ class Aeroplane:
 
     def __repr__(self):
         return (
-            f"Самолет: {self.callsign} ({self.origin_country}) | "
-            f"Скорость: {self.velocity} м/с | Высота: {self.altitude} м"
+            f"Самолет: {self._callsign} ({self._origin_country}) | "
+            f"Скорость: {self._velocity} м/с | Высота: {self._altitude} м"
         )
 
 
