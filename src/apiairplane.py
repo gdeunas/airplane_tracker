@@ -71,6 +71,14 @@ class Aeroplane:
         self._altitude = altitude if altitude is not None else 0.0  # высота полета
 
     @property
+    def callsign(self):
+        return self._callsign
+
+    @property
+    def origin_country(self):
+        return self._origin_country
+
+    @property
     def velocity(self):
         return self._velocity
 

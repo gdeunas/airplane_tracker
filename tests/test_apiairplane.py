@@ -43,8 +43,8 @@ def test_cats_empty():
 
 def test_cast_to_object_list():
     aeroplane1 = Aeroplane('A1', 'Spain', 200, 1000)
-    assert aeroplane1._callsign == 'A1'
-    assert aeroplane1._origin_country == 'Spain'
+    assert aeroplane1.callsign == 'A1'
+    assert aeroplane1.origin_country == 'Spain'
 
 
 def test_cast_to_object_list2():
@@ -56,7 +56,7 @@ def test_cast_to_object_list2():
     result = Aeroplane.cast_to_object_list(mock_data)
 
     assert len(result) == 2
-    assert result[0]._callsign == 'A1'
+    assert result[0].callsign == 'A1'
 
 
 def test_get_coordinates_success(api_instance):
