@@ -25,3 +25,19 @@ def sample_plane():
         altitude = 10000
 
     return MockAeroplane()
+
+
+@pytest.fixture
+def mock_planes():
+    class Plane:
+        def __init__(self, callsign, country, altitude):
+            self.callsign = callsign
+            self.origin_country = country
+            self.altitude = altitude
+
+    return [
+        Plane("A1", "Russia", 1000),
+        Plane("B2", "USA", 5000),
+        Plane("C3", "Russia", 3000),
+        Plane("D4", "France", None)
+    ]
