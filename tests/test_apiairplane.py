@@ -7,8 +7,8 @@ from src.apiairplane import Aeroplane, AeroplanesAPI
 
 def test_aeroplane():
     aeroplane = Aeroplane('A1', 'USA', 250.9, 1000.9)
-    assert aeroplane.callsign == 'A1'
-    assert aeroplane.origin_country == 'USA'
+    assert aeroplane._callsign == 'A1'
+    assert aeroplane._origin_country == 'USA'
     assert aeroplane.velocity == 250.9
     assert aeroplane.altitude == 1000.9
 
@@ -43,8 +43,8 @@ def test_cats_empty():
 
 def test_cast_to_object_list():
     aeroplane1 = Aeroplane('A1', 'Spain', 200, 1000)
-    assert aeroplane1.callsign == 'A1'
-    assert aeroplane1.origin_country == 'Spain'
+    assert aeroplane1._callsign == 'A1'
+    assert aeroplane1._origin_country == 'Spain'
 
 
 def test_cast_to_object_list2():
@@ -56,7 +56,7 @@ def test_cast_to_object_list2():
     result = Aeroplane.cast_to_object_list(mock_data)
 
     assert len(result) == 2
-    assert result[0].callsign == 'A1'
+    assert result[0]._callsign == 'A1'
 
 
 def test_get_coordinates_success(api_instance):
