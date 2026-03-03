@@ -36,7 +36,7 @@ class AeroplanesAPI(BaseAPI):
             return [float(x) for x in bbox]
         return None
 
-    def get_aeroplanes(self, country_name: str):
+    def get_aeroplanes(self, country_name: str)-> list[str]:
         """Получает самолеты в небе конкретной страны по её координатам"""
         bbox = self.get_coordinates(country_name)
         if not bbox:
