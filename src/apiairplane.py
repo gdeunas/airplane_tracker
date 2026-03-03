@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Any
 
 import requests
 
@@ -25,7 +26,7 @@ class AeroplanesAPI(BaseAPI):
 
     def get_coordinates(self, country_name: str):
         """Получает ограничивающую рамку (bounding box) страны"""
-        params = {"country": country_name, "format": "json", "limit": 1}
+        params: dict[str, Any] = {"country": country_name, "format": "json", "limit": 1}
         response = requests.get(self.nominatim_url, params=params, headers=self.headers)
         data = response.json()
 
