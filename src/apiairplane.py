@@ -60,10 +60,10 @@ class AeroplanesAPI(BaseAPI):
 class Aeroplane:
     """Класс о данных самолетах"""
 
-    __slots__ = ('_callsign', '_origin_country', '_velocity', '_altitude')
+    __slots__ = ("_callsign", "_origin_country", "_velocity", "_altitude")
 
     def __init__(
-            self, callsign: str, origin_country: str, velocity: float, altitude: float
+        self, callsign: str, origin_country: str, velocity: float, altitude: float
     ):
         self._callsign = callsign.strip() if callsign else "N/A"  # позывной
         self._origin_country = origin_country  # страна регистрации
@@ -114,8 +114,8 @@ class Aeroplane:
 
 
 # if __name__ == "__main__":
-    # api = AeroplanesAPI()
-    # airplane = api.get_aeroplanes("United States")
-    # airplanes = Aeroplane.cast_to_object_list(airplane)
-    # for plane in airplanes[:5]:
-    #     print(plane)
+# api = AeroplanesAPI()
+# airplane = api.get_aeroplanes("United States")
+# airplanes = Aeroplane.cast_to_object_list(airplane)
+# for plane in airplanes[:5]:
+#     print(plane)
