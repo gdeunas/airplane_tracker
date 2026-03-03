@@ -2,7 +2,7 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from src.apiairplane import Aeroplane, AeroplanesAPI
+from src.apiairplane import Aeroplane
 
 
 def test_aeroplane():

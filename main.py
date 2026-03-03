@@ -24,14 +24,14 @@ json_saver.delete_aeroplane(aeroplane)
 
 # Функция для взаимодействия с пользователем
 def user_interaction():
-    country = input("Введите название страны: ")
+    input("Введите название страны: ")  # country
     top_n = int(input("Введите количество самолетов для вывода в топ N: "))
     filter_words = input(
         "Введите названия стран для фильтрации по стране регистрации: "
     ).split()
     altitude_range = input("Введите диапазон высот полета: ")  # Пример: 100000 - 150000
 
-    filtered_aeroplanes = filter_aeroplanes(aeroplanes, filter_words)
+    filter_aeroplanes(aeroplanes, filter_words)  # filtered_aeroplanes
 
     ranged_aeroplanes = get_aeroplanes_by_altitude(aeroplanes, altitude_range)
 
