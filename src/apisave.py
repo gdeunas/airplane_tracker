@@ -45,13 +45,14 @@ class JSONSaver(BaseSaver):
         self._write_file(data)
 
     def get_aeroplane(self, criteria: dict):
-        """Вывод спискок самолетов по критериям"""
+        """Вывод список самолетов по критериям"""
         data = self._read_file()
         return [
             item for item in data if all(item.get(k) == v for k, v in criteria.items())
         ]
 
     def delete_aeroplane(self, aeroplane):
+        """Удаление самолетов"""
         data = self._read_file()
         new_data = [item for item in data if item.get("callsign") != aeroplane.callsign]
         self._write_file(new_data)

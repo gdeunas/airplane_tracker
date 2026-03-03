@@ -36,7 +36,7 @@ class AeroplanesAPI(BaseAPI):
             return [float(x) for x in bbox]
         return None
 
-    def get_aeroplanes(self, country_name: str)-> list[str]:
+    def get_aeroplanes(self, country_name: str) -> list[str]:
         """Получает самолеты в небе конкретной страны по её координатам"""
         bbox = self.get_coordinates(country_name)
         if not bbox:
@@ -64,7 +64,7 @@ class Aeroplane:
     __slots__ = ("_callsign", "_origin_country", "_velocity", "_altitude")
 
     def __init__(
-        self, callsign: str, origin_country: str, velocity: float, altitude: float
+            self, callsign: str, origin_country: str, velocity: float, altitude: float
     ):
         self._callsign = callsign.strip() if callsign else "N/A"  # позывной
         self._origin_country = origin_country  # страна регистрации
@@ -101,18 +101,18 @@ class Aeroplane:
     def __eq__(self, other):
         return self.altitude == other.altitude and self.velocity == other.velocity
 
-    # Сравнение по скорости (velocity)
     def is_faster_than(self, other):
+        """Сравнение по скорости (velocity)"""
         if not isinstance(other, Aeroplane):
             raise TypeError("Можно сравнивать только с объектом Aeroplane")
         return self.velocity > other.velocity
 
     def __repr__(self):
+        """Красивый вывод"""
         return (
             f"Самолет: {self._callsign} ({self._origin_country}) | "
             f"Скорость: {self._velocity} м/с | Высота: {self._altitude} м"
         )
-
 
 # if __name__ == "__main__":
 # api = AeroplanesAPI()
