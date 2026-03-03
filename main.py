@@ -1,0 +1,44 @@
+# main.py
+from src.apiairplane import Aeroplane, AeroplanesAPI
+from src.apisave import JSONSaver
+from src.interaction_user import filter_aeroplanes, get_aeroplanes_by_altitude, sort_aeroplanes, get_top_aeroplanes, \
+    print_aeroplanes
+
+# Создание экземпляра класса для работы с API сайтов с самолетами
+api = AeroplanesAPI()
+
+# Получение информации о самолетах с opensky-network.org
+aeroplanes = api.get_aeroplanes("Spain")
+
+# Преобразование набора данных в список объектов
+aeroplanes = Aeroplane.cast_to_object_list(aeroplanes)
+
+# Пример работы конструктора класса с одним самолетом
+aeroplane = Aeroplane("UAL1621", "United States", 268.79, 10203.18)
+
+# Сохранение информации в файл
+json_saver = JSONSaver()
+json_saver.add_aeroplane(aeroplane)
+json_saver.delete_aeroplane(aeroplane)
+
+
+# Функция для взаимодействия с пользователем
+def user_interaction():
+    input("Введите название страны: ")  # country
+    top_n = int(input("Введите количество самолетов для вывода в топ N: "))
+    filter_words = input(
+        "Введите названия стран для фильтрации по стране регистрации: "
+    ).split()
+    altitude_range = input("Введите диапазон высот полета: ")  # Пример: 100000 - 150000
+
+    filter_aeroplanes(aeroplanes, filter_words)  # filtered_aeroplanes
+
+    ranged_aeroplanes = get_aeroplanes_by_altitude(aeroplanes, altitude_range)
+
+    sorted_aeroplanes = sort_aeroplanes(ranged_aeroplanes)
+    top_aeroplanes = get_top_aeroplanes(sorted_aeroplanes, top_n)
+    print_aeroplanes(top_aeroplanes)
+
+
+if __name__ == "__main__":
+    user_interaction()
